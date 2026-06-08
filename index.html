@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
@@ -626,11 +626,12 @@ const articleList = document.getElementById('articleList');
 const sectionTitle = articleList.querySelector('.section-title');
 
 function renderArticles(list) {
-  // Remove existing cards (keep section title)
-  articleList.querySelectorAll('.article-card').forEach(c => c.remove());
+  // Remove existing cards and empty-state messages (keep section title)
+  articleList.querySelectorAll('.article-card, .empty-message').forEach(c => c.remove());
 
   if (list.length === 0) {
     const empty = document.createElement('p');
+    empty.className = 'empty-message';
     empty.style.cssText = 'text-align:center;padding:40px;color:var(--text-muted);';
     empty.textContent = '没有找到相关文章';
     articleList.appendChild(empty);
